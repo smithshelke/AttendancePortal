@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/googlesans_medium</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+        <item name="actionBarStyle">@style/myActionBar</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="myActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="background">@color/colorPrimary</item>
+        <item name="titleTextStyle">@style/myActionBar.text</item>
+        <item name="subtitleTextStyle">@style/myActionBar.subtext</item>
+    </style>
+
+    <style name="myActionBar.subtext" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:letterSpacing">0.10</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="myActionBar.text" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:letterSpacing"></item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">@font/googlesans_medium</item>
+    </style>
+
+    <style name="CustomTextAppearance" parent="TextAppearance.MaterialCalendarWidget.Header">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+</resources>

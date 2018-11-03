@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "835156160544",
+    "firebase_url": "https://attendenceportal.firebaseio.com",
+    "project_id": "attendenceportal",
+    "storage_bucket": "attendenceportal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835156160544:android:1023196020a774b0",
+        "android_client_info": {
+          "package_name": "com.example.smith.attendenceportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835156160544-rifu6ssmdn0nf1te0pvpv0q3aq2gho06.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smith.attendenceportal",
+            "certificate_hash": "898171ea95397f93d013ddc3a8de1109cd67a8be"
+          }
+        },
+        {
+          "client_id": "835156160544-kthabdqluejg15tmhi5bff4cde16gll4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVMpX6MAs2xjQeuDDyaCqcNU06mgbul7Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835156160544-kthabdqluejg15tmhi5bff4cde16gll4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
