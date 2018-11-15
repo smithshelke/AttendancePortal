@@ -122,10 +122,12 @@ public class MainActivity extends AppCompatActivity {
         daysAbsent = findViewById(R.id.daysAbsent);
         daysPresent = findViewById(R.id.daysPresent);
         daysLeftEarly = findViewById(R.id.daysLeftEarly);
-        if (!firstTime) {
-            daysLeftEarly.setText("" + attendanceDetails.get(1));
-            daysAbsent.setText("" + attendanceDetails.get(2));
-            daysPresent.setText("" + attendanceDetails.get(0));
+        if(attendanceDetails.size()!=0) {
+            if (!firstTime) {
+                daysLeftEarly.setText("" + attendanceDetails.get(1));
+                daysAbsent.setText("" + attendanceDetails.get(2));
+                daysPresent.setText("" + attendanceDetails.get(0));
+            }
         }
     }
 
@@ -234,26 +236,26 @@ public class MainActivity extends AppCompatActivity {
                 Calendar cal = Calendar.getInstance();
                 cal.set(calendarDay.getYear(),calendarDay.getMonth(),calendarDay.getDay());
                 int noOfWeekDays = getNumberOfWeekDays(cal);
-                for (EachDayInfo e : result) {
-                    cal.setTime(e.getDate());
-                    if (cal.get(Calendar.MONTH) == month) {
-                        if(e.isLessThan7hours()){
-                            noOfdaysEarly++;
-                        }
-                        else{
-                            noOfdaysPresent++;
+                if(result!=null) {
+                    for (EachDayInfo e : result) {
+                        cal.setTime(e.getDate());
+                        if (cal.get(Calendar.MONTH) == month) {
+                            if (e.isLessThan7hours()) {
+                                noOfdaysEarly++;
+                            } else {
+                                noOfdaysPresent++;
+                            }
                         }
                     }
-                }
-                noOfdaysAbsent =  noOfWeekDays - (noOfdaysPresent+noOfdaysEarly);
-                Log.d(TAG, "onMonthChanged: daysAbsent: "+noOfdaysAbsent);
-                try {
-                    daysLeftEarly.setText(""+noOfdaysEarly);
-                    daysAbsent.setText(""+noOfdaysAbsent);
-                    daysPresent.setText(""+noOfdaysPresent);
-                }
-                catch (Exception e){
-                    e.printStackTrace();
+                    noOfdaysAbsent = noOfWeekDays - (noOfdaysPresent + noOfdaysEarly);
+                    Log.d(TAG, "onMonthChanged: daysAbsent: " + noOfdaysAbsent);
+                    try {
+                        daysLeftEarly.setText("" + noOfdaysEarly);
+                        daysAbsent.setText("" + noOfdaysAbsent);
+                        daysPresent.setText("" + noOfdaysPresent);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }
@@ -594,19 +596,21 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<Integer> resultList) {
-            absentDecorator = new AbsentDecorator(Color.parseColor("#FF4081"), allDates, getApplicationContext());
-            mCalendarView.addDecorator(absentDecorator);
-            eventDecorator = new EventDecorator(Color.parseColor("#FFCA28"), datesLT7hrs, getApplicationContext());
-            mCalendarView.addDecorator(eventDecorator);
-            eventDecorator = new EventDecorator(Color.parseColor("#00E676"), datesGT7hrs, getApplicationContext());
-            mCalendarView.addDecorator(eventDecorator);
-            mCalendarView.invalidateDecorators();
+            if(allDates!=null) {
+                absentDecorator = new AbsentDecorator(Color.parseColor("#FF4081"), allDates, getApplicationContext());
+                mCalendarView.addDecorator(absentDecorator);
+                eventDecorator = new EventDecorator(Color.parseColor("#FFCA28"), datesLT7hrs, getApplicationContext());
+                mCalendarView.addDecorator(eventDecorator);
+                eventDecorator = new EventDecorator(Color.parseColor("#00E676"), datesGT7hrs, getApplicationContext());
+                mCalendarView.addDecorator(eventDecorator);
+                mCalendarView.invalidateDecorators();
 
-            attendanceDetails = resultList;
+                attendanceDetails = resultList;
 
-            daysAbsent.setText("" + resultList.get(0));
-            daysLeftEarly.setText("" + resultList.get(1));
-            daysPresent.setText("" + resultList.get(2));
+                daysAbsent.setText("" + resultList.get(0));
+                daysLeftEarly.setText("" + resultList.get(1));
+                daysPresent.setText("" + resultList.get(2));
+            }
         }
 
         private Date convertToDate(String s) {
